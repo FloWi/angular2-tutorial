@@ -15,12 +15,20 @@ import {Component} from 'angular2/core';
         directives of angularjs are prefixed with 'ng' <br>
         <input type="text" [value]="name" [ngClass]="{redClass: true}"> <br>
 
+        <h1>Angular 2 Directives - Event binding</h1>
+        <input type="text" (keyup)="onKeyup(inputElement.value)" #inputElement> <br>
+        <p>{{values}}</p>
     `,
 })
 export class AppComponent {
     name = 'Florian';
+    values = '';
 
     testFn() {
         return 1 === 1;
+    }
+
+    onKeyup(value: String) {
+        this.values += value + ' | '
     }
 }
