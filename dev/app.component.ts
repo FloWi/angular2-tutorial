@@ -18,10 +18,16 @@ import {Component} from 'angular2/core';
         <h1>Angular 2 Directives - Event binding</h1>
         <input type="text" (keyup)="onKeyup(inputElement.value)" #inputElement> <br>
         <p>{{values}}</p>
+
+        <br><br>
+        <h1>Angular 2 Directives - Two way databinding</h1>
+        <input type="text" [(ngModel)]="twoWayBoundName">
+        <p>Your two-way-data-bound-name: {{twoWayBoundName}}</p>
     `,
 })
 export class AppComponent {
     name = 'Florian';
+    //twoWayBoundName: string; //works even without the property
     values = '';
 
     testFn() {
