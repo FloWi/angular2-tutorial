@@ -1,12 +1,11 @@
 import {Component} from 'angular2/core';
-import {PuzzleComponent} from "./puzzle/puzzle.component";
 
 @Component({
     selector: 'app',
     template: `
-        <flwi-puzzle></flwi-puzzle>
+        <h1>Angular 2 Boilerplate</h1>
+
     `,
-    directives: [PuzzleComponent]
 })
 export class AppComponent {
 
