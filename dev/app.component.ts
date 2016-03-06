@@ -1,40 +1,28 @@
 import {Component} from 'angular2/core';
+import {PropertyBindingComponent} from "./property-binding.component";
 
 @Component({
     selector: 'app',
     template: `
-        <h1>Angular 2 Directives - String interpolation</h1>
-        {{'Hey'}} <br>
-        {{1 === 1}} <br>
-        {{name}} <br>
-        {{testFn()}} <br>
-        <input type="text" value="{{name}}" class="{{'redClass'}}"> <br>
-
-        <h1>Angular 2 Directives - Property binding</h1>
-        bound to an angularjs introduced default property (as in 'value') or directive (as in ngClass) <br>
-        directives of angularjs are prefixed with 'ng' <br>
-        <input type="text" [value]="name" [ngClass]="{redClass: true}"> <br>
-
-        <h1>Angular 2 Directives - Event binding</h1>
-        <input type="text" (keyup)="onKeyup(inputElement.value)" #inputElement> <br>
-        <p>{{values}}</p>
-
-        <br><br>
-        <h1>Angular 2 Directives - Two way databinding</h1>
-        <input type="text" [(ngModel)]="twoWayBoundName">
-        <p>Your two-way-data-bound-name: {{twoWayBoundName}}</p>
+        <section class="parent">
+            <h2>This is the parent component</h2>
+            <h4>Please enter your name</h4>
+            <input type="text" [(ngModel)]="name">
+            <br><br>
+            <pre>{{name}}</pre>
+            <section class="child"
+            [ngStyle]="{display: name == null || name === '' ? 'none' : 'block'}"
+            >
+                <flwi-property-binding
+                [myName]="name"
+                [myAge]="29"
+                [myRealAge]="34"
+                ></flwi-property-binding>
+            </section>
+        </section>
     `,
+    directives: [PropertyBindingComponent]
 })
 export class AppComponent {
-    name = 'Florian';
-    //twoWayBoundName: string; //works even without the property
-    values = '';
 
-    testFn() {
-        return 1 === 1;
-    }
-
-    onKeyup(value: String) {
-        this.values += value + ' | '
-    }
 }
