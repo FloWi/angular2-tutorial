@@ -1,5 +1,4 @@
-import {Component} from 'angular2/core';
-import {EventEmitter} from "angular2/core";
+import {Component, EventEmitter} from 'angular2/core'
 
 @Component({
     selector: 'flwi-input',
@@ -20,6 +19,7 @@ import {EventEmitter} from "angular2/core";
         <br>
         <button [disabled]="!isValid" (click)="onSubmit()">Submit</button>
     `,
+    inputs: ['myself'],
     outputs: ['submitted']
 })
 export class InputComponent {
@@ -27,6 +27,7 @@ export class InputComponent {
 
     isFilled = false;
     isValid = false;
+    hasChanged = false;
 
     submitted = new EventEmitter<{name: string, age: string}>();
 
