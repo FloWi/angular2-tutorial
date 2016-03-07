@@ -10,6 +10,8 @@ import {PropertyBindingComponent} from "./property-binding.component";
             <input type="text" [(ngModel)]="name">
             <br><br>
             <pre>{{name}}</pre>
+            <p>The hobbies of the child-component are {{hobbies}}.</p>
+            <br><br>
             <section class="child"
             [ngStyle]="{display: name == null || name === '' ? 'none' : 'block'}"
             >
@@ -17,12 +19,17 @@ import {PropertyBindingComponent} from "./property-binding.component";
                 [myName]="name"
                 [myAge]="29"
                 [myRealAge]="34"
+                (hobbiesChanged)="hobbies = $event"
                 ></flwi-property-binding>
+
             </section>
+
         </section>
     `,
     directives: [PropertyBindingComponent]
 })
 export class AppComponent {
+
+    hobbies = '';
 
 }
